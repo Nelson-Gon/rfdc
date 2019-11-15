@@ -1,13 +1,15 @@
-Package: test
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Package: rfdc
+Title: An R Interface to FoodData Central
+Version: 0.1.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Nelson",
+           family = "Gonzabato",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: What license it uses
+           email = "gonzabato@hotmail.com")
+Description: Nutrition is of utmost importance. To ease access to 
+             nutritional data,the US Department of Agriculture(USDA)
+             provides a number of application programming interfaces(APIs) that are free to use. 
+             The goal of 'rfdc' is to therefore utilize this data to provide a very easy to use yet robust interface to FoodData Central in R.
+License: GPL (>=3.0)
 Encoding: UTF-8
 LazyData: true

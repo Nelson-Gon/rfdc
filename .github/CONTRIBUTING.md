@@ -1,6 +1,6 @@
-# Contributing to mde
+# Contributing to rfdc
 
-This document provides guidelines for contributions to mde.
+This document provides guidelines for contributions to rfdc.
 
 **Kinds of contribution**
 

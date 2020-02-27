@@ -3,3 +3,4 @@
 LICENSE
 \.Rhistory
 \.travis\.yml
+^\.github

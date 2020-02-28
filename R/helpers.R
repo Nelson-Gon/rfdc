@@ -37,18 +37,4 @@ if(grepl("[yY]es|[yY]",user_answer)){
   }
 }
 
-#' Gets api key
-#' @return NULL
 
-
-get_api_key <- function(){
-  # Need to check that it exists
-  if(Sys.getenv("api_key") == ""){
-    stop("No api key found. Did you run set_api_key first?")
-  }
-  else{
-    
-    Sys.getenv("api_key")
-  }
- 
-}

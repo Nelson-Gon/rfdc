@@ -10,6 +10,9 @@ Description: Nutrition is of utmost importance. To ease access to
              nutritional data,the US Department of Agriculture(USDA)
              provides a number of application programming interfaces(APIs) that are free to use. 
              The goal of 'rfdc' is to therefore utilize this data to provide a very easy to use yet robust interface to FoodData Central in R.
+Imports:
+         methods,
+         utils
 License: GPL (>=3.0)
 Encoding: UTF-8
 LazyData: true

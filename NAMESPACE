@@ -2,3 +2,5 @@
 
 export(key_signup)
 export(set_api_key)
+exportClasses(FoodDetails)
+exportClasses(FoodSearch)

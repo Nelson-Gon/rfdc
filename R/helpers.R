@@ -44,7 +44,7 @@ if(grepl("[yY]es|[yY]",user_answer)){
 get_api_key <- function(){
   # Need to check that it exists
   if(Sys.getenv("api_key") == ""){
-    stop("Did you run set_api_key first?")
+    stop("No api key found. Did you run set_api_key first?")
   }
   else{
     

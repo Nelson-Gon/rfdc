@@ -4,3 +4,4 @@ LICENSE
 \.Rhistory
 \.travis\.yml
 ^\.github
+\_config\.yml

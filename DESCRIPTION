@@ -12,7 +12,9 @@ Description: Nutrition is of utmost importance. To ease access to
              The goal of 'rfdc' is to therefore utilize this data to provide a very easy to use yet robust interface to FoodData Central in R.
 Imports:
          methods,
-         utils
+         utils,
+         httr(>= 1.4.1),
+         jsonlite(>= 1.6.1)
 License: GPL (>=3.0)
 Encoding: UTF-8
 LazyData: true

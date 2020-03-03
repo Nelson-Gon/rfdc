@@ -16,7 +16,7 @@ It is also based on [pyfdc](https://github.com/Nelson-Gon/pyfdc)
 
 ---
 
-# Installation
+***Installation**
 
 To install the package, one requires to have `devtools` installed. The package is not on CRAN and the author(s) do(es) not intend to push it  to CRAN  unless specific need arises.
 
@@ -26,7 +26,15 @@ devtools::install_github("Nelson-Gon/rfdc")
 
 ```
 
-## Initial Setup
+**Loading the package**
+
+```
+library(rfdc)
+
+```
+
+
+**Initial Setup**
 
 As a first step, we need to set an API key for the session via `set_api_key` as shown below.
 
@@ -34,7 +42,14 @@ As a first step, we need to set an API key for the session via `set_api_key` as 
 set_api_key("key_here")
 
 ```
-You can sign up for an API key [here](https://fdc.nal.usda.gov/api-key-signup.html)
+
+To signup for an API key:
+
+```
+
+key_signup()
+
+```
 
 ---
 

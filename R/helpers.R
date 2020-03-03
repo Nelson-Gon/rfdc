@@ -29,7 +29,7 @@ key_signup <- function(){
 user_answer<- readline("No api key supplied. Do you want to sign up for a key?")
   
 if(grepl("[yY]es|[yY]",user_answer)){
-    message("Great! Now taking you to the api key sign up page")
+    message("Great! Now taking you to the api key signup page")
     utils::browseURL("https://fdc.nal.usda.gov/api-key-signup.html")
   }
   else{

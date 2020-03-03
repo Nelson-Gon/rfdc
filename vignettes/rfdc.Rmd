@@ -1,3 +1,19 @@
+---
+title: "An R Interface to Food Data Central"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{rfdc}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
 # rfdc: An R Interface to FoodData Central
 
 [![Build Status](https://travis-ci.org/Nelson-Gon/rfdc.png?branch=master)](https://travis-ci.org/Nelson-Gon/rfdc) [![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-3.0.html) [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
@@ -14,21 +30,22 @@ This repository is intended to serve as a replacement to the R package [usdar](h
 
 It is also based on [pyfdc](https://github.com/Nelson-Gon/pyfdc)
 
----
+
 
 **Installation**
 
-To install the package, one requires to have `devtools` installed. The package is not on CRAN and the author does not intend to push it  to CRAN unless specific need arises.
+To install the package, one requires to have `devtools` installed. The package is not on CRAN and the author does not intend to push it  to CRAN  unless specific need arises.
 
-```
+```{r}
 # install.packages("devtools")
-devtools::install_github("Nelson-Gon/rfdc")
+#devtools::install_github("Nelson-Gon/rfdc")
 
 ```
 
 **Loading the package**
 
-```
+```{r}
+
 library(rfdc)
 
 ```
@@ -38,20 +55,21 @@ library(rfdc)
 
 As a first step, we need to set an API key for the session via `set_api_key` as shown below.
 
-```
+```{r}
+
 set_api_key("key_here")
 
 ```
 
 To signup for an API key:
 
+```{r}
+
+#key_signup()
+
 ```
 
-key_signup()
 
-```
-
----
 
 
 Please note that the 'rfdc' project is released with a

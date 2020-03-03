@@ -38,3 +38,15 @@ if(grepl("[yY]es|[yY]",user_answer)){
 }
 
 
+#' Retrieves a user's session API key
+#' @export
+
+get_api_key <- function(){
+ if(Sys.getenv("api_key") == ""){
+   stop("A session API key is required. Did you run set_api_key first?")
+ }
+  else{
+    Sys.getenv("api_key")
+  }
+  
+}

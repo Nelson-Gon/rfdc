@@ -1,14 +1,18 @@
 ---
-title: "An R Interface to Food Data Central"
 author: "Nelson Gonzabato"
-date: "03/03/2020"
-output: pdf_document
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+      %\VignetteIndexEntry{ "An R Interface to FoodData Central"}
+      %\VignetteEngine{knitr::rmarkdown}
+      %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include=FALSE}
-
-knitr::opts_chunk$set(echo = TRUE)
-
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
 ```
 
 
@@ -30,19 +34,20 @@ It is also based on [pyfdc](https://github.com/Nelson-Gon/pyfdc)
 
 
 
+
 **Installation**
 
-To install the package, one requires to have `devtools` installed. The package is not on CRAN and the author does not intend to push it  to CRAN  unless specific need arises.
+To install the package, one requires to have `devtools` installed. The package is not on CRAN and the author does not intend to push it  to CRAN unless specific need arises.
 
 ```{r}
 # install.packages("devtools")
-devtools::install_github("Nelson-Gon/rfdc")
+#devtools::install_github("Nelson-Gon/rfdc")
 
 ```
 
 **Loading the package**
 
-```{r}
+```{r,eval=FALSE}
 library(rfdc)
 
 ```
@@ -52,23 +57,77 @@ library(rfdc)
 
 As a first step, we need to set an API key for the session via `set_api_key` as shown below.
 
-```{r}
+```{r,eval=FALSE}
 set_api_key("key_here")
 
 ```
 
 To signup for an API key:
 
-```{r}
+```{r,eval=FALSE}
 
 key_signup()
 
 ```
 
+**Initialise an object**
+
+To intialise an object, we can use `make_object`. See details about each class below. For instance, to initialise an object of class `FoodSearch` with the search term `indomie`:
+
+
+```{r,eval=FALSE}
+
+my_object <- make_object("FoodSearch",search_phrase="indomie")
+
+```
+
+
+
+**Classes**
+
+1. `FoodSearch` class
+
+
+This class allows access to the food search [endpoint](https://fdc.nal.usda.gov/api-guide.html) i.e to search/query the database. 
+
+**Available methods**
+
+1. `get_food_info`
+
+To get details about our object above:
+
+
+```{r,eval=FALSE}
+
+get_food_info(my_object,"description")
+
+
+```
+
+To get multiple details:
+
+```{r,eval=FALSE}
+
+get_food_info(my_object,c("description",'fdcId','score'))
+
+
+```
+
+Another example:
+
+```{r,eval=FALSE}
+
+head(get_food_info(test,c('fdcId','description','score')))
+
+ 
+
+```
+
+Further exploration is left to the user. 
 
 
 
 Please note that the 'rfdc' project is released with a
-[Contributor Code of Conduct](CODE_OF_CONDUCT.md).
+[Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.
 

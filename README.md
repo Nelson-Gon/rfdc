@@ -51,10 +51,74 @@ key_signup()
 
 ```
 
+**Initialise an object**
+
+To intialise an object, we can use `make_object`. See details about each class below. For instance, to initialise an object of class `FoodSearch` with the search term `indomie`:
+
+
+```
+my_object <- make_object("FoodSearch",search_phrase="indomie")
+
+```
+
+
+
+**Classes**
+
+1. `FoodSearch` class
+
+
+This class allows access to the food search [endpoint](https://fdc.nal.usda.gov/api-guide.html) i.e to search/query the database. 
+
+**Available methods**
+
+1. `get_food_info`
+
+To get details about our object above:
+
+
+```
+
+get_food_info(my_object,"description")
+[1] "CHICKEN INSTANT NOODLES, CHICKEN"
+
+```
+
+To get multiple details:
+
+```
+ get_food_info(my_object,c("description",'fdcId','score'))
+                       description  fdcId     score
+1 CHICKEN INSTANT NOODLES, CHICKEN 686856 -737.5081
+
+```
+
+Another example:
+
+```
+
+head(get_food_info(test,c('fdcId','description','score')))
+
+   fdcId description    score
+1 514921        TOFU 844.9711
+2 411177        TOFU 844.9711
+3 496446        TOFU 844.9711
+4 388749        TOFU 844.9711
+5 498775        TOFU 844.9711
+6 391880        TOFU 844.9711
+
+```
+
+Further exploration is left to the user. 
+
+
 ---
 
 
+
+
+
 Please note that the 'rfdc' project is released with a
-[Contributor Code of Conduct](CODE_OF_CONDUCT.md).
+[Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.
 

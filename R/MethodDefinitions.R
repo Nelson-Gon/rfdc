@@ -1,7 +1,7 @@
 # Method Definitions for Class FoodSearch
 setGeneric("get_food_info", function(object,...) standardGeneric("get_food_info"))
 setMethod("get_food_info", signature("FoodSearch"),
-          function(object,target=NULL,
+          function(object,target="description",
                    page_number=1,
                    require_all=TRUE,
                    sort_field="publishedDate",
@@ -28,6 +28,22 @@ setMethod("get_food_info", signature("FoodSearch"),
         # Make res more manipulatable
       res<-jsonlite::fromJSON(httr::content(res_response,"text"))
       
-      res$foods[[target]]
-            
-            })
+      if(length(target) ==1){
+        
+        res$foods[[target]]
+      }
+      
+      else{
+        
+    do.call(data.frame,
+                Map(function(x) res$foods[[x]],target))
+        
+        
+      }
+        
+      
+      
+})
+
+  
+       

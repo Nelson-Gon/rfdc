@@ -50,3 +50,13 @@ get_api_key <- function(){
   }
   
 }
+
+#' Makes an object of either FoodDetails or FoodSearch
+#' @importFrom methods new
+#' @param object_class Class of the object eg FoodSearch
+#' @param ... Other arguments to the object's class definitions. 
+#' @export
+
+make_object <- function(object_class=NULL,...){
+  new(object_class,...)
+}

@@ -2,6 +2,8 @@
 
 export(get_api_key)
 export(key_signup)
+export(make_object)
 export(set_api_key)
 exportClasses(FoodDetails)
 exportClasses(FoodSearch)
+importFrom(methods,new)

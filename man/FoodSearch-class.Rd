@@ -10,8 +10,6 @@ FoodSearch Class
 \section{Slots}{
 
 \describe{
-\item{\code{api_key}}{An api key as obtained from FoodDataCentral}
-
 \item{\code{search_phrase}}{A phrase to use when querying the database}
 
 \item{\code{brand_owner}}{A character specifying who owns the brand e.g usa}

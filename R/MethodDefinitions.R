@@ -20,7 +20,7 @@ setMethod("get_food_info", signature("FoodSearch"),
  
         #return(httr::add_headers(`api_key` = object@api_key))
         
-        res_response<-httr::POST(paste0("https://api.nal.usda.gov/fdc/v1/?api_key=",
+        res_response<-httr::POST(paste0("https://api.nal.usda.gov/fdc/v1/search/?api_key=",
                           get_api_key()),
                    body = search_query_list, encode = "json",
                    httr::add_headers("Content-Type"="application/json"))

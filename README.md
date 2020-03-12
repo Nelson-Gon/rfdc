@@ -109,6 +109,39 @@ head(get_food_info(test,c('fdcId','description','score')))
 
 ```
 
+2. `get_food_details`
+
+For the `FoodDetails` class, this returns details about a food data central id. You can get an fdcId using `get_food_info` from `FoodSearch`
+
+
+```
+test_object <-make_object("FoodDetails",fdc_id = 504905)
+
+get_food_details(test_object, "ingredients")
+
+$ingredients
+
+[1] "MECHANICALLY SEPARATED CHICKEN, CHICKEN BROTH, WATER, CONTAINS LESS THAN 2% OF: SALT, SUGAR, SPICES, SODIUM PHOSPHATE, SODIUM ASCORBATE, SODIUM NITRITE, NATURAL FLAVORS, EXTRACTIVES OF PAPRIKA."
+
+```
+
+3. `get_nutrients`
+
+To get nutrients corresponding to a food id:
+
+```
+head(get_nutrients(test_object))
+
+      id number                                     name rank unitName
+1 1079    291                     Fiber, total dietary   1200        g
+2 1087    301                              Calcium, Ca   5300       mg
+3 1089    303                                 Iron, Fe   5400       mg
+4 1092    306                             Potassium, K    5700       mg
+5 1110    324 Vitamin D (D2 + D3), International Units   8650       IU
+6 1003    203                                  Protein    600        g
+
+```
+
 Further exploration is left to the user. 
 
 

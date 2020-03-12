@@ -15,6 +15,18 @@
 
 - Retrieves the session api key from .Globalenv
 
+4. **get_food_details**
+
+- Retrieves food details given a Food Data Central ID
+
+5. **get_food_info**
+
+- Gets information from a search query
+
+6. **get_nutrients**
+
+- Provides nutrients given a food data central ID
+
 **Available Classes**
 
 1. **FoodSearch**

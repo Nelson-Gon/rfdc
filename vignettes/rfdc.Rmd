@@ -123,6 +123,33 @@ head(get_food_info(test,c('fdcId','description','score')))
 
 ```
 
+
+2. `get_food_details`
+
+For the `FoodDetails` class, this returns details about a food data central id. You can get an fdcId using `get_food_info` from `FoodSearch`
+
+
+```{r, eval=FALSE}
+
+test_object <-make_object("FoodDetails",fdc_id = 504905)
+
+get_food_details(test_object, "ingredients")
+
+
+```
+
+3. `get_nutrients`
+
+To get nutrients corresponding to a food id:
+
+```{r, eval=FALSE}
+
+head(get_nutrients(test_object))
+
+
+```
+
+
 Further exploration is left to the user. 
 
 

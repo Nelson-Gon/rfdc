@@ -9,8 +9,14 @@ setClass("FoodSearch",
                                          brand_owner="character",
                                          ingredients = "character"))
 
-#' FoodDetails class
+#' FoodDetails 
 #' @export
 #' @slot fdc_id A food id whose details are required. 
 setClass("FoodDetails",
-         representation = representation(fdc_id = "character"))
+         representation = representation(fdc_id = c("numeric")))
+
+# This is too manual
+# I will revisit this sometime later
+# For now only use character as the repr
+#setOldClass("FoodDetailsSingle")
+

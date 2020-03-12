@@ -20,7 +20,7 @@ setMethod("get_food_info", signature("FoodSearch"),
  
         #return(httr::add_headers(`api_key` = object@api_key))
         
-        res_response<-httr::POST(paste0("https://api.nal.usda.gov/fdc/v1/search?api_key=",
+        res_response<-httr::POST(paste0("https://api.nal.usda.gov/fdc/v1/?api_key=",
                           get_api_key()),
                    body = search_query_list, encode = "json",
                    httr::add_headers("Content-Type"="application/json"))
@@ -46,4 +46,24 @@ setMethod("get_food_info", signature("FoodSearch"),
 })
 
   
-       
+# Generics for the FoodDetails class
+setGeneric("get_food_details", function(object,...) standardGeneric("get_food_details"))
+
+setMethod("get_food_details", signature = signature("FoodDetails"),
+          function(object, target_field = NULL){
+  res_response <- httr::GET(paste0("https://api.nal.usda.gov/fdc/v1/",
+                           object@fdc_id,"?api_key=", get_api_key()))                               
+  
+    res_from_json <- jsonlite::fromJSON(httr::content(res_response,"text"))
+    res_from_json[target_field]
+})
+
+# Get nutrients
+
+setGeneric("get_nutrients", function(object,...) standardGeneric("get_nutrients"))
+
+setMethod("get_nutrients", signature = signature("FoodDetails"),
+          function(object,...){
+            
+    get_food_details(object,target_field="foodNutrients")$foodNutrients$nutrient
+          })

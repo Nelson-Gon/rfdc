@@ -1,3 +1,11 @@
+# rfdc 0.1.1
+
+**Major Changes**
+
+* Refactored to suit newer API specifications
+
+* Exported previously non exported key functions
+
 # rfdc 0.1.0
 
 **Available functions**

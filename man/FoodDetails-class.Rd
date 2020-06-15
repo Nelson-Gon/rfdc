@@ -3,9 +3,9 @@
 \docType{class}
 \name{FoodDetails-class}
 \alias{FoodDetails-class}
-\title{FoodDetails class}
+\title{FoodDetails}
 \description{
-FoodDetails class
+FoodDetails
 }
 \section{Slots}{
 

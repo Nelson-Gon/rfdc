@@ -1,10 +1,9 @@
 Nelson Gonzabato
-2020-06-15
+2021-09-19
 
 # rfdc: An R Interface to FoodData Central
 
-[![Build
-Status](https://travis-ci.org/Nelson-Gon/rfdc.png?branch=master)](https://travis-ci.org/Nelson-Gon/rfdc)
+[![R-CMD-check](https://github.com/Nelson-Gon/rfdc/actions/workflows/check-pkg.yaml/badge.svg)](https://github.com/Nelson-Gon/rfdc/actions/workflows/check-pkg.yaml)
 [![license](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-3.0.html)
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Nelson-Gon/rfdc/graphs/commit-activity)
@@ -35,7 +34,6 @@ package is not on CRAN and the author does not intend to push it to CRAN
 unless specific need arises.
 
 ``` r
-
 install.packages("devtools")
 devtools::install_github("Nelson-Gon/rfdc")
 ```
@@ -43,7 +41,6 @@ devtools::install_github("Nelson-Gon/rfdc")
 **Loading the package**
 
 ``` r
-
 library(rfdc)
 #> Please run set_api_key first.Run key_signup to get an API key.
 ```
@@ -60,7 +57,6 @@ set_api_key("key_here")
 To signup for an API key:
 
 ``` r
-
 key_signup()
 ```
 
@@ -71,7 +67,6 @@ class below. For instance, to initialise an object of class `FoodSearch`
 with the search term `indomie`:
 
 ``` r
-
 my_object <- make_object("FoodSearch",search_phrase="indomie")
 ```
 
@@ -90,27 +85,30 @@ the database.
 To get details about our object above:
 
 ``` r
-
 get_food_info(my_object,"description")
-#> [1] "CHICKEN INSTANT NOODLES, CHICKEN"
+#> [1] "CHICKEN INSTANT NOODLES, CHICKEN"                    
+#> [2] "CHICKEN CURRY FLAVOUR INSTANT NOODLES, CHICKEN CURRY"
+#> [3] "SPECIAL CHICKEN FLAVOUR INSTANT NOODLES, CHICKEN"
 ```
 
 To get multiple details:
 
 ``` r
-
 get_food_info(my_object,c("description",'fdcId','score'))
-#>                        description  fdcId     score
-#> 1 CHICKEN INSTANT NOODLES, CHICKEN 686856 -696.3518
+#>                                            description   fdcId     score
+#> 1                     CHICKEN INSTANT NOODLES, CHICKEN 1816702 -544.5051
+#> 2 CHICKEN CURRY FLAVOUR INSTANT NOODLES, CHICKEN CURRY 1987917 -544.5051
+#> 3     SPECIAL CHICKEN FLAVOUR INSTANT NOODLES, CHICKEN 1987671 -544.5051
 ```
 
 Another example:
 
 ``` r
-
 head(get_food_info(my_object,c('fdcId','description','score')))
-#>    fdcId                      description     score
-#> 1 686856 CHICKEN INSTANT NOODLES, CHICKEN -696.3518
+#>     fdcId                                          description     score
+#> 1 1816702                     CHICKEN INSTANT NOODLES, CHICKEN -544.5051
+#> 2 1987917 CHICKEN CURRY FLAVOUR INSTANT NOODLES, CHICKEN CURRY -544.5051
+#> 3 1987671     SPECIAL CHICKEN FLAVOUR INSTANT NOODLES, CHICKEN -544.5051
 ```
 
 2.  `get_food_details`
@@ -119,7 +117,6 @@ For the `FoodDetails` class, this returns details about a food data
 central id. You can get an fdcId using `get_food_info` from `FoodSearch`
 
 ``` r
-
 test_object <-make_object("FoodDetails",fdc_id = 504905)
 
 get_food_details(test_object, "ingredients")
@@ -132,15 +129,14 @@ get_food_details(test_object, "ingredients")
 To get nutrients corresponding to a food id:
 
 ``` r
-
 head(get_nutrients(test_object))
 #>     id number                                     name rank unitName
 #> 1 1079    291                     Fiber, total dietary 1200        g
-#> 2 1087    301                              Calcium, Ca 5300       mg
-#> 3 1089    303                                 Iron, Fe 5400       mg
-#> 4 1092    306                             Potassium, K 5700       mg
-#> 5 1110    324 Vitamin D (D2 + D3), International Units 8650       IU
-#> 6 1003    203                                  Protein  600        g
+#> 2 1089    303                                 Iron, Fe 5400       mg
+#> 3 1110    324 Vitamin D (D2 + D3), International Units 8650       IU
+#> 4 1087    301                              Calcium, Ca 5300       mg
+#> 5 1092    306                             Potassium, K 5700       mg
+#> 6 1235    539                            Sugars, added 1540        g
 ```
 
 Further exploration is left to the user.

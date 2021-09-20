@@ -2,8 +2,6 @@
 #' @export
 #' @slot search_phrase A phrase to use when querying the database
 
-
-
 setClass("FoodSearch",
          representation = representation(search_phrase="character"))
 

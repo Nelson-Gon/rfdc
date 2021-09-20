@@ -11,9 +11,5 @@ FoodSearch Class
 
 \describe{
 \item{\code{search_phrase}}{A phrase to use when querying the database}
-
-\item{\code{brand_owner}}{A character specifying who owns the brand e.g usa}
-
-\item{\code{ingredients}}{An optional ingredients phrase}
 }}
 

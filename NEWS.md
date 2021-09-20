@@ -2,6 +2,8 @@
 
 **Major Changes**
 
+* Fixed issues with package documentation. See https://github.com/Nelson-Gon/rfdc/issues/1
+
 * Refactored to suit newer API specifications
 
 * Exported previously non exported key functions

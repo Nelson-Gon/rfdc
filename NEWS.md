@@ -2,6 +2,8 @@
 
 **Major Changes**
 
+* `get_nutrients` now returns serving information. 
+
 * Fixed issues with package documentation. See https://github.com/Nelson-Gon/rfdc/issues/1
 
 * Refactored to suit newer API specifications

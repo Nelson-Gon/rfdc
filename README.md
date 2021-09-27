@@ -1,5 +1,5 @@
 Nelson Gonzabato
-2021-09-19
+2021-09-27
 
 # rfdc: An R Interface to FoodData Central
 
@@ -130,13 +130,13 @@ To get nutrients corresponding to a food id:
 
 ``` r
 head(get_nutrients(test_object))
-#>     id number                                     name rank unitName
-#> 1 1079    291                     Fiber, total dietary 1200        g
-#> 2 1089    303                                 Iron, Fe 5400       mg
-#> 3 1110    324 Vitamin D (D2 + D3), International Units 8650       IU
-#> 4 1087    301                              Calcium, Ca 5300       mg
-#> 5 1092    306                             Potassium, K 5700       mg
-#> 6 1235    539                            Sugars, added 1540        g
+#>     id number                                     name rank unitName serving
+#> 1 1079    291                     Fiber, total dietary 1200        g    0.00
+#> 2 1089    303                                 Iron, Fe 5400       mg    0.83
+#> 3 1110    324 Vitamin D (D2 + D3), International Units 8650       IU    0.00
+#> 4 1087    301                              Calcium, Ca 5300       mg   62.00
+#> 5 1092    306                             Potassium, K 5700       mg   54.00
+#> 6 1235    539                            Sugars, added 1540        g    0.80
 ```
 
 Further exploration is left to the user.

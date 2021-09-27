@@ -43,7 +43,7 @@ setMethod("get_food_info", signature("FoodSearch"),
  
        
         
-res_response<-httr::GET(paste0("https://api.nal.usda.gov/fdc/v1/search/?api_key=",
+res_response<-httr::GET(paste0("https://api.nal.usda.gov/fdc/v1/foods/search/?api_key=",
                           get_api_key()),
                    query = search_query_list)
       
@@ -84,9 +84,11 @@ setGeneric("get_food_details", function(object,target_field = NULL,
   standardGeneric("get_food_details"))
 #' @aliases get-food-details
 #' @rdname get_food_details
+# TODO: define format abridged etc
+# TODO: Better docs and flexibility. 
 setMethod("get_food_details", signature = signature("FoodDetails"),
           function(object, target_field = NULL){
-  res_response <- httr::GET(paste0("https://api.nal.usda.gov/fdc/v1/",
+  res_response <- httr::GET(paste0("https://api.nal.usda.gov/fdc/v1/food/",
                            object@fdc_id,"?api_key=", get_api_key()))                               
   
     res_from_json <- jsonlite::fromJSON(httr::content(res_response,"text"))
@@ -111,5 +113,7 @@ setGeneric("get_nutrients", function(object,target_field,...) standardGeneric("g
 setMethod("get_nutrients", signature = signature("FoodDetails"),
           function(object,target_field,...){
             
-    get_food_details(object,target_field="foodNutrients")$foodNutrients$nutrient
+    nutrients<-get_food_details(object,target_field="foodNutrients")$foodNutrients$nutrient
+    nutrients$serving <- get_food_details(object,target_field="foodNutrients")$foodNutrient$amount
+    nutrients 
           })

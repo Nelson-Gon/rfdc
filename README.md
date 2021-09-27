@@ -137,6 +137,13 @@ head(get_nutrients(test_object))
 #> 4 1087    301                              Calcium, Ca 5300       mg   62.00
 #> 5 1092    306                             Potassium, K 5700       mg   54.00
 #> 6 1235    539                            Sugars, added 1540        g    0.80
+#>                                                       serving_descr
+#> 1 Calculated from a daily value percentage per serving size measure
+#> 2 Calculated from a daily value percentage per serving size measure
+#> 3 Calculated from a daily value percentage per serving size measure
+#> 4 Calculated from a daily value percentage per serving size measure
+#> 5 Calculated from a daily value percentage per serving size measure
+#> 6                    Calculated from value per serving size measure
 ```
 
 Further exploration is left to the user.

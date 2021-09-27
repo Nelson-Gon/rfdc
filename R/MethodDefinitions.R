@@ -112,8 +112,9 @@ setGeneric("get_nutrients", function(object,target_field,...) standardGeneric("g
 #' @rdname get_nutrients 
 setMethod("get_nutrients", signature = signature("FoodDetails"),
           function(object,target_field,...){
-            
-    nutrients<-get_food_details(object,target_field="foodNutrients")$foodNutrients$nutrient
-    nutrients$serving <- get_food_details(object,target_field="foodNutrients")$foodNutrient$amount
+    food_details <- get_food_details(object,target_field="foodNutrients")$foodNutrients            
+    nutrients<- food_details$nutrient
+    nutrients$serving <- food_details$amount
+    nutrients$serving_descr <- food_details$foodNutrientDerivation$description
     nutrients 
           })

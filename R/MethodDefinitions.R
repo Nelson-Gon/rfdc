@@ -68,6 +68,8 @@ res_response<-httr::GET(paste0("https://api.nal.usda.gov/fdc/v1/foods/search/?ap
 #' Method definitions for the FoodDetails Class
 #' @param object An object of class FoodSearch
 #' @param target_field Target field to extract, can be a vector. 
+#' @param result_format One of abridged or full. Defaults to full.
+#' @param nutrients A numeric vector of nutrient IDs. 
 #' Defaults to "description"
 #' @param ... Ignored. 
 #' @docType methods
@@ -79,7 +81,9 @@ res_response<-httr::GET(paste0("https://api.nal.usda.gov/fdc/v1/foods/search/?ap
 #' get_food_details(test_object, "ingredients")
 #' }
 #' @export
-setGeneric("get_food_details", function(object,target_field = NULL,
+setGeneric("get_food_details", function(object,target_field = "ingredients",
+                                        result_format="full",
+                                        nutrients = NULL, 
                                         ...) 
   standardGeneric("get_food_details"))
 #' @aliases get-food-details
@@ -87,12 +91,22 @@ setGeneric("get_food_details", function(object,target_field = NULL,
 # TODO: define format abridged etc
 # TODO: Better docs and flexibility. 
 setMethod("get_food_details", signature = signature("FoodDetails"),
-          function(object, target_field = NULL){
-  res_response <- httr::GET(paste0("https://api.nal.usda.gov/fdc/v1/food/",
-                           object@fdc_id,"?api_key=", get_api_key()))                               
+          function(object, target_field = NULL,
+                   result_format="full",
+                   nutrients = NULL){
+get_url <- paste0("https://api.nal.usda.gov/fdc/v1/food/",
+                  object@fdc_id,"?api_key=", get_api_key(),
+                  "&format=",result_format,"&nutrients=",
+                  paste0(nutrients, collapse=","))
+
+print(paste0("Using URL: ", gsub("(api_key=)(.*)(&.*)","\\1*****\\3",get_url), collapse=""))
+                        
+            
+res_response <- httr::GET(get_url)                               
   
-    res_from_json <- jsonlite::fromJSON(httr::content(res_response,"text"))
-    res_from_json[target_field]
+res_from_json <- jsonlite::fromJSON(httr::content(res_response,"text"))
+if (target_field == "all") res_from_json else(res_from_json[target_field]) 
+# res_from_json
 })
 #' Get Nutrients given a FoodDetails Object
 #' @param object An object of class FoodSearch
@@ -118,3 +132,27 @@ setMethod("get_nutrients", signature = signature("FoodDetails"),
     nutrients$serving_descr <- food_details$foodNutrientDerivation$description
     nutrients 
           })
+
+#' Get Label Nutrients given a FoodDetails Object
+#' @param object An object of class FoodSearch
+#' @param target_field Target field to extract.
+#' @param ... Other params to get_food_details. 
+#' @docType methods 
+#' @rdname get_label_nutrients 
+#' @return Nutrients' data.frame. 
+#' @examples 
+#' \dontrun{
+#' test_object <-make_object("FoodDetails",fdc_id = 504905)
+#' head(get_label_nutrients(test_object))
+#' }
+#' @export
+setGeneric("get_label_nutrients", function(object,target_field,...) standardGeneric("get_label_nutrients"))
+#' @aliases get_label_nutrients
+#' @rdname get_label_nutrients 
+setMethod("get_label_nutrients", signature = signature("FoodDetails"),
+          function(object,target_field,...){
+        food_details <- get_food_details(object,target_field="all",...)
+        data.frame(lapply(food_details$labelNutrients, "[[",1))
+
+})
+

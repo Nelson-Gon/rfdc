@@ -1,5 +1,5 @@
 Nelson Gonzabato
-2021-09-27
+2021-11-08
 
 # rfdc: An R Interface to FoodData Central
 
@@ -96,9 +96,9 @@ To get multiple details:
 ``` r
 get_food_info(my_object,c("description",'fdcId','score'))
 #>                                            description   fdcId     score
-#> 1                     CHICKEN INSTANT NOODLES, CHICKEN 1816702 -544.5051
-#> 2 CHICKEN CURRY FLAVOUR INSTANT NOODLES, CHICKEN CURRY 1987917 -544.5051
-#> 3     SPECIAL CHICKEN FLAVOUR INSTANT NOODLES, CHICKEN 1987671 -544.5051
+#> 1                     CHICKEN INSTANT NOODLES, CHICKEN 1816702 -537.7092
+#> 2 CHICKEN CURRY FLAVOUR INSTANT NOODLES, CHICKEN CURRY 1987917 -537.7092
+#> 3     SPECIAL CHICKEN FLAVOUR INSTANT NOODLES, CHICKEN 1987671 -537.7092
 ```
 
 Another example:
@@ -106,9 +106,9 @@ Another example:
 ``` r
 head(get_food_info(my_object,c('fdcId','description','score')))
 #>     fdcId                                          description     score
-#> 1 1816702                     CHICKEN INSTANT NOODLES, CHICKEN -544.5051
-#> 2 1987917 CHICKEN CURRY FLAVOUR INSTANT NOODLES, CHICKEN CURRY -544.5051
-#> 3 1987671     SPECIAL CHICKEN FLAVOUR INSTANT NOODLES, CHICKEN -544.5051
+#> 1 1816702                     CHICKEN INSTANT NOODLES, CHICKEN -537.7092
+#> 2 1987917 CHICKEN CURRY FLAVOUR INSTANT NOODLES, CHICKEN CURRY -537.7092
+#> 3 1987671     SPECIAL CHICKEN FLAVOUR INSTANT NOODLES, CHICKEN -537.7092
 ```
 
 2.  `get_food_details`
@@ -120,6 +120,7 @@ central id. You can get an fdcId using `get_food_info` from `FoodSearch`
 test_object <-make_object("FoodDetails",fdc_id = 504905)
 
 get_food_details(test_object, "ingredients")
+#> [1] "Using URL: https://api.nal.usda.gov/fdc/v1/food/504905?api_key=*****&nutrients="
 #> $ingredients
 #> [1] "MECHANICALLY SEPARATED CHICKEN, CHICKEN BROTH, WATER, CONTAINS LESS THAN 2% OF: SALT, SUGAR, SPICES, SODIUM PHOSPHATE, SODIUM ASCORBATE, SODIUM NITRITE, NATURAL FLAVORS, EXTRACTIVES OF PAPRIKA."
 ```
@@ -130,6 +131,7 @@ To get nutrients corresponding to a food id:
 
 ``` r
 head(get_nutrients(test_object))
+#> [1] "Using URL: https://api.nal.usda.gov/fdc/v1/food/504905?api_key=*****&nutrients="
 #>     id number                                     name rank unitName serving
 #> 1 1079    291                     Fiber, total dietary 1200        g    0.00
 #> 2 1089    303                                 Iron, Fe 5400       mg    0.83
@@ -144,6 +146,19 @@ head(get_nutrients(test_object))
 #> 4 Calculated from a daily value percentage per serving size measure
 #> 5 Calculated from a daily value percentage per serving size measure
 #> 6                    Calculated from value per serving size measure
+```
+
+A `get_label_nutrients` method for a given Food Data Central can also be
+used as follows. Unfortunately, it is unclear what the provided values
+mean nutrition wise.
+
+``` r
+get_label_nutrients(test_object)
+#> [1] "Using URL: https://api.nal.usda.gov/fdc/v1/food/504905?api_key=*****&nutrients="
+#>   fat saturatedFat transFat cholesterol sodium carbohydrates fiber sugars
+#> 1  15          4.5        0        84.5   1060             2     0      1
+#>   protein calcium iron potassium addedSugar calories
+#> 1      10    80.6 1.08      70.2       1.04      179
 ```
 
 Further exploration is left to the user.

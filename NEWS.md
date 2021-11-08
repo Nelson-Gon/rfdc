@@ -2,6 +2,8 @@
 
 **Major Changes**
 
+* A `get_label_nutrients` call now allows users to get label nutrients for a given FDC ID. S
+
 * `get_nutrients` now returns serving information. 
 
 * Fixed issues with package documentation. See https://github.com/Nelson-Gon/rfdc/issues/1

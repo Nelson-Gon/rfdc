@@ -151,6 +151,12 @@ head(get_nutrients(test_object))
 
 ```
 
+A `get_label_nutrients` method for a given Food Data Central can also be used as follows. Unfortunately, it is unclear what the provided values mean nutrition wise. 
+
+```{r}
+get_label_nutrients(test_object)
+```
+
 
 Further exploration is left to the user. 
 

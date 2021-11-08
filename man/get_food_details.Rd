@@ -7,14 +7,29 @@
 \alias{get-food-details}
 \title{Method definitions for the FoodDetails Class}
 \usage{
-get_food_details(object, target_field = NULL, ...)
+get_food_details(
+  object,
+  target_field = "ingredients",
+  result_format = "full",
+  nutrients = NULL,
+  ...
+)
 
-\S4method{get_food_details}{FoodDetails}(object, target_field = NULL)
+\S4method{get_food_details}{FoodDetails}(
+  object,
+  target_field = NULL,
+  result_format = "full",
+  nutrients = NULL
+)
 }
 \arguments{
 \item{object}{An object of class FoodSearch}
 
-\item{target_field}{Target field to extract, can be a vector. 
+\item{target_field}{Target field to extract, can be a vector.}
+
+\item{result_format}{One of abridged or full. Defaults to full.}
+
+\item{nutrients}{A numeric vector of nutrient IDs. 
 Defaults to "description"}
 
 \item{...}{Ignored.}

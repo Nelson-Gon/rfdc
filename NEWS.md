@@ -2,6 +2,8 @@
 
 **Major Changes**
 
+* `get_label_nutrients` now errors if an FDC ID has no label nutrients, similar to [pyfdc](https://nelson-gon.github.io/pyfdc). 
+
 * `set_api_key` can now retrieve an API key from a user's environment if it exists. 
 
 * A `get_label_nutrients` call now allows users to get label nutrients for a given FDC ID. 

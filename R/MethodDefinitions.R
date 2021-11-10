@@ -152,7 +152,12 @@ setGeneric("get_label_nutrients", function(object,target_field,...) standardGene
 setMethod("get_label_nutrients", signature = signature("FoodDetails"),
           function(object,target_field,...){
         food_details <- get_food_details(object,target_field="all",...)
-        data.frame(lapply(food_details$labelNutrients, "[[",1))
+        label_nutrients_obj <- 
+        res<-data.frame(lapply(food_details$labelNutrients, "[[",1))
+        if(is.null(unlist(res))){
+          stop(paste0("FDC ID ", object@fdc_id, " has not label nutrients."))
+        }
+        res
 
 })
 

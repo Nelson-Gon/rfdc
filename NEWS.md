@@ -2,7 +2,9 @@
 
 **Major Changes**
 
-* A `get_label_nutrients` call now allows users to get label nutrients for a given FDC ID. S
+* `set_api_key` can now retrieve an API key from a user's environment if it exists. 
+
+* A `get_label_nutrients` call now allows users to get label nutrients for a given FDC ID. 
 
 * `get_nutrients` now returns serving information. 
 

@@ -1,5 +1,5 @@
 Nelson Gonzabato
-2021-11-08
+2021-11-10
 
 # rfdc: An R Interface to FoodData Central
 
@@ -23,7 +23,7 @@ Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-squ
 This repository is intended to serve as a replacement to the R package
 [usdar](https://github.com/Nelson-Gon/usdar). This was necessary because
 the former API is slated for End of Life as explained in issue
-[\#2](https://github.com/Nelson-Gon/usdar/issues/2).
+[#2](https://github.com/Nelson-Gon/usdar/issues/2).
 
 It is also based on [pyfdc](https://github.com/Nelson-Gon/pyfdc)
 
@@ -51,7 +51,8 @@ As a first step, we need to set an API key for the session via
 `set_api_key` as shown below.
 
 ``` r
-set_api_key("key_here")
+set_api_key()
+#> AN API key already exists, enjoy!
 ```
 
 To signup for an API key:

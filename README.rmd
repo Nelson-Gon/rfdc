@@ -59,8 +59,8 @@ library(rfdc)
 
 As a first step, we need to set an API key for the session via `set_api_key` as shown below.
 
-```{r,eval=FALSE}
-set_api_key("key_here")
+```{r}
+set_api_key()
 
 ```
 

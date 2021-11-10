@@ -9,12 +9,22 @@
 
 set_api_key <- function(api_key = NULL){
   
-  if(is.null(api_key)){
- key_signup()
-  }
+  if(all(is.null(api_key), Sys.getenv("rfdc_key") == "")){
+
+      key_signup()
+      
+    }
+
   else{
-    Sys.setenv("api_key" = api_key)
-    message("API key now set for this session.")
+    if(Sys.getenv("rfdc_key") != ""){
+      message("AN API key already exists, enjoy!")
+    }
+    else{
+      Sys.setenv("rfdc_key" = api_key)
+      message("API key now set for this session.")
+      
+    }
+
   }
 }
 
@@ -42,11 +52,11 @@ if(grepl("[yY]es|[yY]",user_answer)){
 #' @export
 
 get_api_key <- function(){
- if(Sys.getenv("api_key") == ""){
+ if(Sys.getenv("rfdc_key") == ""){
    stop("A session API key is required. Did you run set_api_key first?")
  }
   else{
-    Sys.getenv("api_key")
+    Sys.getenv("rfdc_key")
   }
   
 }
